@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações sobre Planetas</title>
+
+</head>
+<body>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        p {
+            margin: 0;
+            color: #666;
+        }
+</style>
+<div class="container">
+    <h1>Informações sobre Planetas</h1>
+    <label for="planetas">Escolha um planeta:</label>
+    <select id="planetas" onchange="mostrarInformacoes()">
+        <option value="Mercurio">Mercúrio</option>
+        <option value="Venus">Vênus</option>
+        <option value="Terra">Terra</option>
+        <option value="Marte">Marte</option>
+        <option value="Jupiter">Júpiter</option>
+        <option value="Saturno">Saturno</option>
+        <option value="Urano">Urano</option>
+        <option value="Netuno">Netuno</option>
+    </select>
+    <div id="informacoes">
+        <p id="distancia"></p>
+        <p id="diametro"></p>
+    </div>
+</div>
+
+<script>
+    function mostrarInformacoes() {
+        var select = document.getElementById("planetas");
+        var planeta = select.options[select.selectedIndex].text;
+        var distancia = document.getElementById("distancia");
+        var diametro = document.getElementById("diametro");
+
+        // Dados dos planetas
+        var planetas = {
+            "Mercúrio": {"distancia_media_ao_sol": 0.39, "diametro": 4879},
+            "Vênus": {"distancia_media_ao_sol": 0.72, "diametro": 12104},
+            "Terra": {"distancia_media_ao_sol": 1.00, "diametro": 12742},
+            "Marte": {"distancia_media_ao_sol": 1.52, "diametro": 6779},
+            "Júpiter": {"distancia_media_ao_sol": 5.20, "diametro": 139820},
+            "Saturno": {"distancia_media_ao_sol": 9.58, "diametro": 116460},
+            "Urano": {"distancia_media_ao_sol": 19.18, "diametro": 50724},
+            "Netuno": {"distancia_media_ao_sol": 30.06, "diametro": 49244}
+        };
+
+        distancia.textContent = "Distância média ao Sol: " + (planetas[planeta].distancia_media_ao_sol * 149.6).toFixed(2) + " milhões de km";
+        diametro.textContent = "Diâmetro: " + planetas[planeta].diametro + " km";
+    }
+
+    // Exibindo informações do primeiro planeta ao carregar a página
+    mostrarInformacoes();
+</script>
+
+</body>
+</html>
